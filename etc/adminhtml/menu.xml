@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Alpina. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Alpina_RecipesAndArticles::recipes_articles" 
+             title="Alpina Recipes and Articles" 
+             module="Alpina_RecipesAndArticles" 
+             sortOrder="60" 
+             parent="Magento_Backend::content" 
+             resource="Alpina_RecipesAndArticles::recipes_articles"/>
+        <add id="Alpina_RecipesAndArticles::manage" 
+             title="Manage Recipes" 
+             module="Alpina_RecipesAndArticles" 
+             sortOrder="10" 
+             parent="Alpina_RecipesAndArticles::recipes_articles" 
+             action="alpina_recipes/index/index" 
+             resource="Alpina_RecipesAndArticles::manage"/>
+    </menu>
+</config>
