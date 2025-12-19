@@ -36,13 +36,25 @@ class Save extends Action
         $resultRedirect = $this->resultRedirectFactory->create();
         $data = $this->getRequest()->getPostValue();
 
+        // LOGGING: Capturar todos los datos que llegan
+        $writer = new \Zend_Log_Writer_Stream(BP . '/var/log/alpina_recipe_debug.log');
+        $logger = new \Zend_Log();
+        $logger->addWriter($writer);
+        $logger->info('=== SAVE CONTROLLER CALLED ===');
+        $logger->info('Raw POST data: ' . print_r($data, true));
+        $logger->info('Request params: ' . print_r($this->getRequest()->getParams(), true));
+
         if ($data) {
             // Si los datos vienen dentro de 'data', extraerlos
             if (isset($data['data']) && is_array($data['data'])) {
+                $logger->info('Extracting data from nested array');
                 $data = $data['data'];
+                $logger->info('Extracted data: ' . print_r($data, true));
             }
             
             $id = $this->getRequest()->getParam('recipe_id');
+            $logger->info('Recipe ID from param: ' . ($id ?? 'NULL'));
+            
             $model = $this->recipeFactory->create();
 
             if ($id) {
@@ -55,12 +67,16 @@ class Save extends Action
 
             if (empty($data['url_key']) && !empty($data['title'])) {
                 $data['url_key'] = $this->generateUrlKey($data['title']);
+                $logger->info('Generated URL key: ' . $data['url_key']);
             }
 
+            $logger->info('Setting data to model: ' . print_r($data, true));
             $model->setData($data);
 
             try {
+                $logger->info('Attempting to save...');
                 $model->save();
+                $logger->info('Save successful! Recipe ID: ' . $model->getId());
                 $this->messageManager->addSuccessMessage(__('You saved the recipe.'));
                 $this->dataPersistor->clear('alpina_recipe');
 
@@ -69,24 +85,18 @@ class Save extends Action
                 }
                 return $resultRedirect->setPath('*/*/');
             } catch (LocalizedException $e) {
-                $this->messageManager->addErrorMessage($e->getMessage());
-                $writer = new \Zend_Log_Writer_Stream(BP . '/var/log/alpina_recipe.log');
-                $logger = new \Zend_Log();
-                $logger->addWriter($writer);
                 $logger->info('LocalizedException: ' . $e->getMessage());
-                $logger->info('Data: ' . print_r($data, true));
+                $this->messageManager->addErrorMessage($e->getMessage());
             } catch (\Exception $e) {
-                $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the recipe.'));
-                $writer = new \Zend_Log_Writer_Stream(BP . '/var/www/html/var/log/alpina_recipe.log');
-                $logger = new \Zend_Log();
-                $logger->addWriter($writer);
                 $logger->info('Exception: ' . $e->getMessage());
                 $logger->info('Trace: ' . $e->getTraceAsString());
-                $logger->info('Data: ' . print_r($data, true));
+                $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the recipe.'));
             }
 
             $this->dataPersistor->set('alpina_recipe', $data);
             return $resultRedirect->setPath('*/*/edit', ['recipe_id' => $id]);
+        } else {
+            $logger->info('NO DATA RECEIVED IN POST!');
         }
 
         return $resultRedirect->setPath('*/*/');
