@@ -12,12 +12,19 @@
              sortOrder="60" 
              parent="Magento_Backend::content" 
              resource="Alpina_RecipesAndArticles::recipes_articles"/>
-        <add id="Alpina_RecipesAndArticles::manage" 
-             title="Manage Recipes" 
+        <add id="Alpina_RecipesAndArticles::recipes" 
+             title="Recipes" 
              module="Alpina_RecipesAndArticles" 
              sortOrder="10" 
              parent="Alpina_RecipesAndArticles::recipes_articles" 
-             action="alpina_recipes/index/index" 
-             resource="Alpina_RecipesAndArticles::manage"/>
+             action="alpina_recipes/recipe/index" 
+             resource="Alpina_RecipesAndArticles::recipes"/>
+        <add id="Alpina_RecipesAndArticles::articles" 
+             title="Articles" 
+             module="Alpina_RecipesAndArticles" 
+             sortOrder="20" 
+             parent="Alpina_RecipesAndArticles::recipes_articles" 
+             action="alpina_recipes/article/index" 
+             resource="Alpina_RecipesAndArticles::articles"/>
     </menu>
 </config>

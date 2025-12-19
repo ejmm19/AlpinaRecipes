@@ -1,0 +1,30 @@
+<!--
+/**
+ * Copyright © Alpina. All rights reserved.
+ */
+-->
+<div class="admin__page-section">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Recipes Management')) ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="messages">
+            <div class="message message-success">
+                <div>
+                    <?= $block->escapeHtml(__('Welcome to the Recipes section!')) ?>
+                </div>
+            </div>
+        </div>
+        <div style="padding: 20px; background: #f5f5f5; border-radius: 4px; margin-top: 20px;">
+            <h3><?= $block->escapeHtml(__('Coming Soon')) ?></h3>
+            <p><?= $block->escapeHtml(__('Here you will be able to:')) ?></p>
+            <ul style="list-style: disc; margin-left: 20px;">
+                <li><?= $block->escapeHtml(__('Create and manage recipes')) ?></li>
+                <li><?= $block->escapeHtml(__('Add ingredients and instructions')) ?></li>
+                <li><?= $block->escapeHtml(__('Upload recipe images')) ?></li>
+                <li><?= $block->escapeHtml(__('Organize recipes by categories')) ?></li>
+                <li><?= $block->escapeHtml(__('Publish recipes to the frontend')) ?></li>
+            </ul>
+        </div>
+    </div>
+</div>

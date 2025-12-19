@@ -10,7 +10,8 @@
             <resource id="Magento_Backend::admin">
                 <resource id="Magento_Backend::content">
                     <resource id="Alpina_RecipesAndArticles::recipes_articles" title="Alpina Recipes and Articles" sortOrder="60">
-                        <resource id="Alpina_RecipesAndArticles::manage" title="Manage Recipes" sortOrder="10"/>
+                        <resource id="Alpina_RecipesAndArticles::recipes" title="Recipes" sortOrder="10"/>
+                        <resource id="Alpina_RecipesAndArticles::articles" title="Articles" sortOrder="20"/>
                     </resource>
                 </resource>
             </resource>
