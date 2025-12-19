@@ -25,7 +25,7 @@
             </storageConfig>
             <updateUrl path="mui/index/render"/>
         </settings>
-        <aclResource>Alpina_ArticlesAndArticles::articles</aclResource>
+        <aclResource>Alpina_RecipesAndArticles::articles</aclResource>
         <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="alpina_article_listing_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
@@ -48,14 +48,14 @@
                         <message translate="true">Are you sure you want to delete selected articles?</message>
                         <title translate="true">Delete articles</title>
                     </confirm>
-                    <url path="alpina_articles/article/massDelete"/>
+                    <url path="alpina_recipes/article/massDelete"/>
                     <type>delete</type>
                     <label translate="true">Delete</label>
                 </settings>
             </action>
             <action name="enable">
                 <settings>
-                    <url path="alpina_articles/article/massStatus">
+                    <url path="alpina_recipes/article/massStatus">
                         <param name="status">1</param>
                     </url>
                     <type>enable</type>
@@ -64,7 +64,7 @@
             </action>
             <action name="disable">
                 <settings>
-                    <url path="alpina_articles/article/massStatus">
+                    <url path="alpina_recipes/article/massStatus">
                         <param name="status">0</param>
                     </url>
                     <type>disable</type>
@@ -93,44 +93,12 @@
                 <label translate="true">Title</label>
             </settings>
         </column>
-        <column name="featured_product">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">Alpina Product</label>
-            </settings>
-        </column>
-        <column name="difficulty_level">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">Difficulty</label>
-            </settings>
-        </column>
-        <column name="preparation_time">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">Prep Time</label>
-            </settings>
-        </column>
-        <column name="servings">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">Servings</label>
-            </settings>
-        </column>
         <column name="is_active" component="Magento_Ui/js/grid/columns/select">
             <settings>
                 <options class="Magento\Config\Model\Config\Source\Yesno"/>
                 <filter>select</filter>
                 <dataType>select</dataType>
                 <label translate="true">Status</label>
-            </settings>
-        </column>
-        <column name="featured" component="Magento_Ui/js/grid/columns/select">
-            <settings>
-                <options class="Magento\Config\Model\Config\Source\Yesno"/>
-                <filter>select</filter>
-                <dataType>select</dataType>
-                <label translate="true">Featured</label>
             </settings>
         </column>
         <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
@@ -140,7 +108,7 @@
                 <label translate="true">Created</label>
             </settings>
         </column>
-        <actionsColumn name="actions" class="Alpina\ArticlesAndArticles\Ui\Component\Listing\Column\ArticleActions">
+        <actionsColumn name="actions" class="Alpina\RecipesAndArticles\Ui\Component\Listing\Column\ArticleActions">
             <settings>
                 <indexField>article_id</indexField>
             </settings>

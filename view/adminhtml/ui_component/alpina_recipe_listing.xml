@@ -93,44 +93,12 @@
                 <label translate="true">Title</label>
             </settings>
         </column>
-        <column name="featured_product">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">Alpina Product</label>
-            </settings>
-        </column>
-        <column name="difficulty_level">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">Difficulty</label>
-            </settings>
-        </column>
-        <column name="preparation_time">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">Prep Time</label>
-            </settings>
-        </column>
-        <column name="servings">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">Servings</label>
-            </settings>
-        </column>
         <column name="is_active" component="Magento_Ui/js/grid/columns/select">
             <settings>
                 <options class="Magento\Config\Model\Config\Source\Yesno"/>
                 <filter>select</filter>
                 <dataType>select</dataType>
                 <label translate="true">Status</label>
-            </settings>
-        </column>
-        <column name="featured" component="Magento_Ui/js/grid/columns/select">
-            <settings>
-                <options class="Magento\Config\Model\Config\Source\Yesno"/>
-                <filter>select</filter>
-                <dataType>select</dataType>
-                <label translate="true">Featured</label>
             </settings>
         </column>
         <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">

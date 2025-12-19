@@ -65,11 +65,6 @@ class Save extends Action
                 }
             }
 
-            if (empty($data['url_key']) && !empty($data['title'])) {
-                $data['url_key'] = $this->generateUrlKey($data['title']);
-                $logger->info('Generated URL key: ' . $data['url_key']);
-            }
-
             $logger->info('Setting data to model: ' . print_r($data, true));
             $model->setData($data);
 

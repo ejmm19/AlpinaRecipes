@@ -2,35 +2,35 @@
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">alpina_recipe_form.recipe_form_data_source</item>
+            <item name="provider" xsi:type="string">alpina_article_form.article_form_data_source</item>
         </item>
-        <item name="label" xsi:type="string" translate="true">Recipe Information</item>
+        <item name="label" xsi:type="string" translate="true">Article Information</item>
     </argument>
     <settings>
         <buttons>
-            <button name="save" class="Alpina\RecipesAndArticles\Block\Adminhtml\Recipe\Edit\SaveButton"/>
-            <button name="delete" class="Alpina\RecipesAndArticles\Block\Adminhtml\Recipe\Edit\DeleteButton"/>
-            <button name="back" class="Alpina\RecipesAndArticles\Block\Adminhtml\Recipe\Edit\BackButton"/>
+            <button name="save" class="Alpina\ArticlesAndArticles\Block\Adminhtml\Article\Edit\SaveButton"/>
+            <button name="delete" class="Alpina\ArticlesAndArticles\Block\Adminhtml\Article\Edit\DeleteButton"/>
+            <button name="back" class="Alpina\ArticlesAndArticles\Block\Adminhtml\Article\Edit\BackButton"/>
         </buttons>
-        <namespace>alpina_recipe_form</namespace>
+        <namespace>alpina_article_form</namespace>
         <dataScope>data</dataScope>
         <deps>
-            <dep>alpina_recipe_form.recipe_form_data_source</dep>
+            <dep>alpina_article_form.article_form_data_source</dep>
         </deps>
     </settings>
-    <dataSource name="recipe_form_data_source">
+    <dataSource name="article_form_data_source">
         <argument name="data" xsi:type="array">
             <item name="js_config" xsi:type="array">
                 <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
             </item>
         </argument>
         <settings>
-            <submitUrl path="alpina_recipes/recipe/save"/>
+            <submitUrl path="alpina_articles/article/save"/>
         </settings>
-        <dataProvider class="Alpina\RecipesAndArticles\Model\Recipe\DataProvider" name="recipe_form_data_source">
+        <dataProvider class="Alpina\ArticlesAndArticles\Model\Article\DataProvider" name="article_form_data_source">
             <settings>
-                <requestFieldName>recipe_id</requestFieldName>
-                <primaryFieldName>recipe_id</primaryFieldName>
+                <requestFieldName>article_id</requestFieldName>
+                <primaryFieldName>article_id</primaryFieldName>
             </settings>
         </dataProvider>
     </dataSource>
@@ -38,28 +38,28 @@
         <settings>
             <label translate="true">General Information</label>
         </settings>
-        <field name="recipe_id" formElement="input">
+        <field name="article_id" formElement="input">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">recipe</item>
+                    <item name="source" xsi:type="string">article</item>
                 </item>
             </argument>
             <settings>
                 <dataType>text</dataType>
                 <visible>false</visible>
-                <dataScope>recipe_id</dataScope>
+                <dataScope>article_id</dataScope>
             </settings>
         </field>
         <field name="is_active" sortOrder="10" formElement="checkbox">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">recipe</item>
+                    <item name="source" xsi:type="string">article</item>
                     <item name="default" xsi:type="number">1</item>
                 </item>
             </argument>
             <settings>
                 <dataType>boolean</dataType>
-                <label translate="true">Enable Recipe</label>
+                <label translate="true">Enable Article</label>
                 <dataScope>is_active</dataScope>
             </settings>
             <formElements>
@@ -77,7 +77,7 @@
         <field name="title" sortOrder="20" formElement="input">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">recipe</item>
+                    <item name="source" xsi:type="string">article</item>
                 </item>
             </argument>
             <settings>
@@ -85,14 +85,14 @@
                     <rule name="required-entry" xsi:type="boolean">true</rule>
                 </validation>
                 <dataType>text</dataType>
-                <label translate="true">Recipe Title</label>
+                <label translate="true">Article Title</label>
                 <dataScope>title</dataScope>
             </settings>
         </field>
         <field name="content" sortOrder="30" formElement="wysiwyg">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">recipe</item>
+                    <item name="source" xsi:type="string">article</item>
                     <item name="wysiwygConfigData" xsi:type="array">
                         <item name="height" xsi:type="string">400px</item>
                         <item name="add_variables" xsi:type="boolean">false</item>
