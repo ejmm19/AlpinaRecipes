@@ -37,6 +37,11 @@ class Save extends Action
         $data = $this->getRequest()->getPostValue();
 
         if ($data) {
+            // Si los datos vienen dentro de 'data', extraerlos
+            if (isset($data['data']) && is_array($data['data'])) {
+                $data = $data['data'];
+            }
+            
             $id = $this->getRequest()->getParam('recipe_id');
             $model = $this->recipeFactory->create();
 
@@ -48,7 +53,7 @@ class Save extends Action
                 }
             }
 
-            if (empty($data['url_key'])) {
+            if (empty($data['url_key']) && !empty($data['title'])) {
                 $data['url_key'] = $this->generateUrlKey($data['title']);
             }
 
@@ -65,8 +70,19 @@ class Save extends Action
                 return $resultRedirect->setPath('*/*/');
             } catch (LocalizedException $e) {
                 $this->messageManager->addErrorMessage($e->getMessage());
+                $writer = new \Zend_Log_Writer_Stream(BP . '/var/log/alpina_recipe.log');
+                $logger = new \Zend_Log();
+                $logger->addWriter($writer);
+                $logger->info('LocalizedException: ' . $e->getMessage());
+                $logger->info('Data: ' . print_r($data, true));
             } catch (\Exception $e) {
                 $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the recipe.'));
+                $writer = new \Zend_Log_Writer_Stream(BP . '/var/www/html/var/log/alpina_recipe.log');
+                $logger = new \Zend_Log();
+                $logger->addWriter($writer);
+                $logger->info('Exception: ' . $e->getMessage());
+                $logger->info('Trace: ' . $e->getTraceAsString());
+                $logger->info('Data: ' . print_r($data, true));
             }
 
             $this->dataPersistor->set('alpina_recipe', $data);
