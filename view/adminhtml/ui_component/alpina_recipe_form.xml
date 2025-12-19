@@ -321,7 +321,7 @@
     </fieldset>
     <fieldset name="seo">
         <settings>
-            <label translate="true">SEO & Tags</label>
+            <label translate="true">SEO and Tags</label>
         </settings>
         <field name="tags" sortOrder="10" formElement="input">
             <argument name="data" xsi:type="array">
