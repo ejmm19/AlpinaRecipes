@@ -1,0 +1,36 @@
+{
+    "alpina_recipe": {
+        "column": {
+            "recipe_id": true,
+            "title": true,
+            "url_key": true,
+            "short_description": true,
+            "description": true,
+            "ingredients": true,
+            "instructions": true,
+            "image": true,
+            "featured_product": true,
+            "preparation_time": true,
+            "cooking_time": true,
+            "servings": true,
+            "difficulty_level": true,
+            "category": true,
+            "nutrition_info": true,
+            "video_url": true,
+            "tags": true,
+            "is_active": true,
+            "featured": true,
+            "sort_order": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "ALPINA_RECIPE_URL_KEY": true,
+            "ALPINA_RECIPE_IS_ACTIVE": true,
+            "ALPINA_RECIPE_FEATURED": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

@@ -1,0 +1,21 @@
+<?php
+/**
+ * Copyright (c) Alpina. All rights reserved.
+ */
+
+namespace Alpina\RecipesAndArticles\Model\ResourceModel;
+
+use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+
+class Recipe extends AbstractDb
+{
+    /**
+     * Initialize resource model
+     *
+     * @return void
+     */
+    protected function _construct()
+    {
+        $this->_init('alpina_recipe', 'recipe_id');
+    }
+}

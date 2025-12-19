@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © Alpina. All rights reserved.
+ * Copyright (c) Alpina. All rights reserved.
  */
 
 namespace Alpina\RecipesAndArticles\Controller\Adminhtml\Index;

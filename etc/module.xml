@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <!--
 /**
- * Copyright © Alpina. All rights reserved.
+ * Copyright (c) Alpina. All rights reserved.
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
-    <module name="Alpina_RecipesAndArticles" setup_version="1.0.0">
+    <module name="Alpina_RecipesAndArticles">
         <sequence>
             <module name="Magento_Backend"/>
         </sequence>
