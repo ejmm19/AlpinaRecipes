@@ -4,6 +4,7 @@
         <arguments>
             <argument name="collections" xsi:type="array">
                 <item name="alpina_recipe_listing_data_source" xsi:type="string">Alpina\RecipesAndArticles\Model\ResourceModel\Recipe\Grid\Collection</item>
+                <item name="alpina_article_listing_data_source" xsi:type="string">Alpina\RecipesAndArticles\Model\ResourceModel\Article\Grid\Collection</item>
             </argument>
         </arguments>
     </type>
@@ -11,6 +12,12 @@
         <arguments>
             <argument name="mainTable" xsi:type="string">alpina_recipe</argument>
             <argument name="resourceModel" xsi:type="string">Alpina\RecipesAndArticles\Model\ResourceModel\Recipe</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Alpina\RecipesAndArticles\Model\ResourceModel\Article\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">alpina_article</argument>
+            <argument name="resourceModel" xsi:type="string">Alpina\RecipesAndArticles\Model\ResourceModel\Article</argument>
         </arguments>
     </virtualType>
 </config>

@@ -9,17 +9,10 @@ use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
 
-class Index extends Action
+class NewAction extends Action
 {
-    /**
-     * @var PageFactory
-     */
     protected $resultPageFactory;
 
-    /**
-     * @param Context $context
-     * @param PageFactory $resultPageFactory
-     */
     public function __construct(
         Context $context,
         PageFactory $resultPageFactory
@@ -28,26 +21,16 @@ class Index extends Action
         $this->resultPageFactory = $resultPageFactory;
     }
 
-    /**
-     * Check for is allowed
-     *
-     * @return bool
-     */
     protected function _isAllowed()
     {
         return $this->_authorization->isAllowed('Alpina_ArticlesAndArticles::articles');
     }
 
-    /**
-     * Index action
-     *
-     * @return \Magento\Framework\View\Result\Page
-     */
     public function execute()
     {
         $resultPage = $this->resultPageFactory->create();
         $resultPage->setActiveMenu('Alpina_ArticlesAndArticles::articles');
-        $resultPage->getConfig()->getTitle()->prepend(__('Manage Articles'));
+        $resultPage->getConfig()->getTitle()->prepend(__('New Article'));
         return $resultPage;
     }
 }

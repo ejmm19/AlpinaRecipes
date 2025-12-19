@@ -32,5 +32,35 @@
         "constraint": {
             "PRIMARY": true
         }
+    },
+    "alpina_article": {
+        "column": {
+            "article_id": true,
+            "title": true,
+            "url_key": true,
+            "short_description": true,
+            "content": true,
+            "featured_image": true,
+            "author": true,
+            "category": true,
+            "tags": true,
+            "meta_description": true,
+            "meta_keywords": true,
+            "is_active": true,
+            "featured": true,
+            "publish_date": true,
+            "sort_order": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "ALPINA_ARTICLE_URL_KEY": true,
+            "ALPINA_ARTICLE_IS_ACTIVE": true,
+            "ALPINA_ARTICLE_FEATURED": true,
+            "ALPINA_ARTICLE_PUBLISH_DATE": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
     }
 }
