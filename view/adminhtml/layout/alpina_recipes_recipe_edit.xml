@@ -3,7 +3,7 @@
     <update handle="styles"/>
     <body>
         <referenceContainer name="content">
-            <uiComponent name="alpina_recipe_listing"/>
+            <uiComponent name="alpina_recipe_form"/>
         </referenceContainer>
     </body>
 </page>

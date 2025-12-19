@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">alpina_recipe_form.recipe_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Recipe Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save" class="Alpina\RecipesAndArticles\Block\Adminhtml\Recipe\Edit\SaveButton"/>
+            <button name="delete" class="Alpina\RecipesAndArticles\Block\Adminhtml\Recipe\Edit\DeleteButton"/>
+            <button name="back" class="Alpina\RecipesAndArticles\Block\Adminhtml\Recipe\Edit\BackButton"/>
+        </buttons>
+        <namespace>alpina_recipe_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>alpina_recipe_form.recipe_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="recipe_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="alpina_recipes/recipe/save"/>
+        </settings>
+        <dataProvider class="Alpina\RecipesAndArticles\Model\Recipe\DataProvider" name="recipe_form_data_source">
+            <settings>
+                <requestFieldName>recipe_id</requestFieldName>
+                <primaryFieldName>recipe_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label translate="true">General Information</label>
+        </settings>
+        <field name="recipe_id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">recipe</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>recipe_id</dataScope>
+            </settings>
+        </field>
+        <field name="is_active" sortOrder="10" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">recipe</item>
+                    <item name="default" xsi:type="number">1</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Enable Recipe</label>
+                <dataScope>is_active</dataScope>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="featured" sortOrder="15" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">recipe</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Featured Recipe</label>
+                <dataScope>featured</dataScope>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="title" sortOrder="20" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">recipe</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Recipe Title</label>
+                <dataScope>title</dataScope>
+            </settings>
+        </field>
+        <field name="url_key" sortOrder="30" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">recipe</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">URL Key</label>
+                <dataScope>url_key</dataScope>
+            </settings>
+        </field>
+        <field name="featured_product" sortOrder="40" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">recipe</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Featured Alpina Product</label>
+                <dataScope>featured_product</dataScope>
+                <notice translate="true">Example: Alpina Yogurt Greek, Alpina Milk, Alpina Cheese, etc.</notice>
+            </settings>
+        </field>
+        <field name="category" sortOrder="50" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">recipe</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Category</label>
+                <dataScope>category</dataScope>
+                <notice translate="true">Example: Breakfast, Dessert, Main Course, Snack</notice>
+            </settings>
+        </field>
+        <field name="short_description" sortOrder="60" formElement="textarea">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">recipe</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Short Description</label>
+                <dataScope>short_description</dataScope>
+            </settings>
+        </field>
+    </fieldset>
+    <fieldset name="recipe_details">
+        <settings>
+            <label translate="true">Recipe Details</label>
+        </settings>
+        <field name="difficulty_level" sortOrder="10" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">recipe</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Difficulty Level</label>
+                <dataScope>difficulty_level</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options>
+                            <option name="easy" xsi:type="array">
+                                <item name="value" xsi:type="string">Easy</item>
+                                <item name="label" xsi:type="string" translate="true">Easy</item>
+                            </option>
+                            <option name="medium" xsi:type="array">
+                                <item name="value" xsi:type="string">Medium</item>
+                                <item name="label" xsi:type="string" translate="true">Medium</item>
+                            </option>
+                            <option name="hard" xsi:type="array">
+                                <item name="value" xsi:type="string">Hard</item>
+                                <item name="label" xsi:type="string" translate="true">Hard</item>
+                            </option>
+                        </options>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="preparation_time" sortOrder="20" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">recipe</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Preparation Time (minutes)</label>
+                <dataScope>preparation_time</dataScope>
+            </settings>
+        </field>
+        <field name="cooking_time" sortOrder="30" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">recipe</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Cooking Time (minutes)</label>
+                <dataScope>cooking_time</dataScope>
+            </settings>
+        </field>
+        <field name="servings" sortOrder="40" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">recipe</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Servings</label>
+                <dataScope>servings</dataScope>
+            </settings>
+        </field>
+        <field name="ingredients" sortOrder="50" formElement="textarea">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">recipe</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Ingredients</label>
+                <dataScope>ingredients</dataScope>
+                <notice translate="true">List all ingredients (one per line)</notice>
+            </settings>
+        </field>
+        <field name="instructions" sortOrder="60" formElement="textarea">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">recipe</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Cooking Instructions</label>
+                <dataScope>instructions</dataScope>
+                <notice translate="true">Step by step instructions</notice>
+            </settings>
+        </field>
+        <field name="nutrition_info" sortOrder="70" formElement="textarea">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">recipe</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Nutritional Information</label>
+                <dataScope>nutrition_info</dataScope>
+                <notice translate="true">Calories, proteins, fats, carbs, etc.</notice>
+            </settings>
+        </field>
+    </fieldset>
+    <fieldset name="media">
+        <settings>
+            <label translate="true">Media</label>
+        </settings>
+        <field name="image" sortOrder="10" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">recipe</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Recipe Image URL</label>
+                <dataScope>image</dataScope>
+            </settings>
+        </field>
+        <field name="video_url" sortOrder="20" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">recipe</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Video Tutorial URL</label>
+                <dataScope>video_url</dataScope>
+                <notice translate="true">YouTube or Vimeo URL</notice>
+            </settings>
+        </field>
+    </fieldset>
+    <fieldset name="seo">
+        <settings>
+            <label translate="true">SEO & Tags</label>
+        </settings>
+        <field name="tags" sortOrder="10" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">recipe</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Tags</label>
+                <dataScope>tags</dataScope>
+                <notice translate="true">Comma separated tags</notice>
+            </settings>
+        </field>
+        <field name="description" sortOrder="20" formElement="textarea">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">recipe</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Full Description</label>
+                <dataScope>description</dataScope>
+            </settings>
+        </field>
+    </fieldset>
+</form>
