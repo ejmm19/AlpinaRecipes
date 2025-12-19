@@ -1,0 +1,25 @@
+{
+    "name": "alpina/module-recipes-and-articles",
+    "description": "Alpina Recipes and Articles module",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Eric Martinez Muentes",
+            "email": "ejmm10.19@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "magento/framework": "^103.0"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Alpina\\RecipesAndArticles\\": ""
+        }
+    }
+}
